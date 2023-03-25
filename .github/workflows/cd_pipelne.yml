@@ -65,10 +65,12 @@ jobs:
           # SSH port
           port: 22
           # # passphrase
-          # passphrase: dep
+          passphrase: shakti
           debug: true
           script: |  
             cd ~/Backend-Final/docker
+            git checkout deploy_pipeline
+            git pull
             docker-compose down
             docker-compose build
             docker-compose up -d
