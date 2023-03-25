@@ -69,7 +69,8 @@ jobs:
           debug: true
           script: |  
             cd ~/Backend-Final/docker
-            git pull origin main 
+            git checkout deploy_pipeline
+            git pull 
             docker-compose down
             docker-compose build
             docker-compose up -d
