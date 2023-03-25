@@ -64,8 +64,8 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           # SSH port
           port: 22
-          # passphrase
-          passphrase: dep
+          # # passphrase
+          # passphrase: dep
           debug: true
           script: |  
             cd ~/Backend-Final/docker
