@@ -68,9 +68,9 @@ jobs:
           passphrase: shakti
           debug: true
           script: |  
-            cd ~/Backend-Final/docker
             git checkout deploy_pipeline
             git pull
+            cd ~/Backend-Final/docker
             docker-compose down
             docker-compose build
             docker-compose up -d
