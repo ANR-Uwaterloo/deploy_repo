@@ -1,0 +1,75 @@
+# name: build and deploy
+
+# on:
+#   push:
+#     branches: [ "main" ]
+#   pull_request:
+#     branches: [ "main" ]
+
+# jobs:
+#   docker:
+#     runs-on: ubuntu-latest
+#     steps:
+#       -
+#         name: Checkout
+#         uses: actions/checkout@v3
+#       -
+#         name: Set up QEMU
+#         uses: docker/setup-qemu-action@v2
+#       -
+#         name: Set up Docker Buildx
+#         uses: docker/setup-buildx-action@v2
+#       -
+#         name: Login to Docker Hub
+#         uses: docker/login-action@v2
+#         with:
+#           username: anrteam2023 #${{ secrets.DOCKERHUB_USERNAME }}
+#           password: dckr_pat_DLKmOvZC1gADEOL0fyuHEo_eyZo #${{ secrets.DOCKERHUB_TOKEN }}
+#       -
+#         name: Build and push
+#         uses: docker/build-push-action@v4
+#         with:
+#           context: .
+#           push: true
+#           tags: user/app:latest
+
+
+
+
+
+
+name: Build and Deploy Pipeline
+
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+  # Allows you to run this workflow manually from the Actions tab on Repo homepage
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  deploy:
+    runs-on: ubuntu-latest   
+    steps:
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v0.1.4
+        # Don't forget to add environment vars as secrets in repository settings on GitHub
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          # SSH port
+          port: 22
+          # passphrase
+          passphrase: dep
+          debug: true
+          script: |  
+            cd ~/Backend-Final/docker
+            git pull origin main 
+            docker-compose down
+            docker-compose build
+            docker-compose up -d
