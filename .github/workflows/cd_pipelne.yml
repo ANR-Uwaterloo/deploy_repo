@@ -64,11 +64,9 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           # SSH port
           port: 22
-          # # passphrase
-          passphrase: shakti
           debug: true
           script: |
-            sudo -u $(whoami) ssh -T git@github.com < shakti
+            sudo -u $(whoami) ssh -T git@github.com
             cd ~/Backend-Final
             git pull
             git checkout deploy_pipeline
