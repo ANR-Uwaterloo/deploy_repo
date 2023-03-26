@@ -31,7 +31,7 @@ jobs:
             git checkout deploy_pipeline
             git pull
             chmod 777 ~/Backend-Final/docker/deployment.sh
-            sh ~/Backend-Final/docker/deployment.sh
+            sh ~/Backend-Final/docker/deployment.sh dev
             # cd docker
             # echo "Shutting down current apps...."
             # docker-compose -f docker-compose.prod.yml down
