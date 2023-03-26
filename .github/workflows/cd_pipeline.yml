@@ -74,6 +74,8 @@ jobs:
             cd docker
             echo "Shutting down current apps...."
             docker-compose down
+            echo "Deleting images...."
+            docker builder prune
             echo "Building apps...."
             docker-compose build
             echo "Starting database and app now...."
