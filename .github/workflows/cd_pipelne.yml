@@ -67,11 +67,17 @@ jobs:
           # # passphrase
           passphrase: shakti
           debug: true
-          script: |  
+          script: |
+            sudo -u $(whoami) ssh -T git@github.com
             cd ~/Backend-Final
             git checkout deploy_pipeline
             git pull
             cd docker
+            echo "Shutting down current apps...."
             docker-compose down
+            echo "Building apps...."
             docker-compose build
+            echo "Starting database and app now...."
             docker-compose up -d
+            echo "Started database and app."
+
