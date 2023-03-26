@@ -26,13 +26,12 @@ jobs:
           port: 22
           debug: true
           script: 
+            cd ~/Backend-Final
+            git pull
+            git checkout deploy_pipeline
+            git pull
             chmod 777 ~/Backend-Final/docker/deployment.sh
             sh ~/Backend-Final/docker/deployment.sh
-            # sudo -u $(whoami) ssh -T git@github.com
-            # cd ~/Backend-Final
-            # git pull
-            # git checkout deploy_pipeline
-            # git pull
             # cd docker
             # echo "Shutting down current apps...."
             # docker-compose -f docker-compose.prod.yml down
