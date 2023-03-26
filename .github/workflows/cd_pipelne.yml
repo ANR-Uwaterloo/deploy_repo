@@ -68,8 +68,9 @@ jobs:
           passphrase: shakti
           debug: true
           script: |
-            sudo -u $(whoami) ssh -T git@github.com
+            sudo -u $(whoami) ssh -T git@github.com < shakti
             cd ~/Backend-Final
+            git pull
             git checkout deploy_pipeline
             git pull
             cd docker
