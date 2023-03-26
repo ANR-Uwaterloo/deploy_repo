@@ -25,7 +25,7 @@ jobs:
           # SSH port
           port: 22
           debug: true
-          script: sh ~/Backend-Final/docker/deployment.sh dev
+          script: sh ~/Backend-Final/docker/deployment.sh prod
 
             # cd docker
             # echo "Shutting down current apps...."
