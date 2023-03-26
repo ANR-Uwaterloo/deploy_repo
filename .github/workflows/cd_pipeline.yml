@@ -26,8 +26,8 @@ jobs:
           port: 22
           debug: true
           script: 
-          chmod 777 ~/Backend-Final/docker/deployment.sh
-          sh ~/Backend-Final/docker/deployment.sh
+            chmod 777 ~/Backend-Final/docker/deployment.sh
+            sh ~/Backend-Final/docker/deployment.sh
             # sudo -u $(whoami) ssh -T git@github.com
             # cd ~/Backend-Final
             # git pull
