@@ -32,7 +32,7 @@ jobs:
             git checkout deploy_pipeline
             git pull
             cd docker
-            sh ~/Backend-Final/docker/deployment.sh dev
+            sh ~/Backend-Final/docker/deployment.sh prod
 
             # cd docker
             # echo "Shutting down current apps...."
