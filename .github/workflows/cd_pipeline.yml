@@ -35,7 +35,7 @@ jobs:
             sh ~/Backend-Final/docker/deployment.sh prod
 
             # cd docker
-            # echo "Shutting down current apps...."
+            # echo " Shutting down current apps...."
             # docker-compose -f docker-compose.prod.yml down
             # docker-compose -f docker-compose.yml down
             # echo "Deleting images...."
