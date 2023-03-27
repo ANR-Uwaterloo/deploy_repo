@@ -3,9 +3,7 @@ name: Build and Deploy Pipeline
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    branches: [develop]
 
   # Allows you to run this workflow manually from the Actions tab on Repo homepage
   workflow_dispatch:
@@ -32,17 +30,4 @@ jobs:
             git checkout deploy_pipeline
             git pull
             cd docker
-            sh ~/Backend-Final/docker/deployment.sh prod
-
-            # cd docker
-            # echo " Shutting down current apps...."
-            # docker-compose -f docker-compose.prod.yml down
-            # docker-compose -f docker-compose.yml down
-            # echo "Deleting images...."
-            # docker system prune --all --force
-            # echo "Building apps...."
-            # docker-compose -f docker-compose.prod.yml build
-            # echo "Starting database and app now...."
-            # docker-compose -f docker-compose.prod.yml up -d
-            # echo "Started database and app."
-
+            sh ~/Backend-Final/docker/deployment.sh dev
